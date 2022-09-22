@@ -1,0 +1,50 @@
+html 
+  head 
+   title  register page 
+  link(rel="stylesheet", href="index.css", type="text/css")
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  body(style="background-image:url('bg.jgpg'") 
+   h4.fon ART DE SERVICE
+   section.sec
+    img(src="icon.jpeg",alt="this is the image section")
+   div.forms
+    h2 
+     u Register
+    form(action='/register',method="post",class="myform")
+     h4.err #{error}
+     h4 Enter your name:
+     input(type="text",name="username" required)
+     br
+     h4 Enter your email address: 
+     input(type="email",name="email" required)
+     
+     
+     h4 Enter the name of your county: 
+     input(type="text",name="county")
+     
+     h4 Select  Gender :
+     input(type="radio",name="gender",value="male") 
+     label(for="gender") male 
+     
+     input(type="radio",name="gender",value="female") 
+     label(for="gender") female
+     
+     input(type="radio",name="gender",value="none") 
+     label(for="gender") None
+    
+     
+     
+     h4  Enter your password: 
+     input(type="password",name="password1" required)
+     
+     h4  Confirm your password: 
+     input(type="password",name="password2" required)
+     
+     br
+     button(type="submit" ,class="button") register
+     br
+
+     a(href="/login" ) Already have an Account 

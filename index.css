@@ -1,0 +1,15 @@
+.main {
+    border: 1px solid;
+    padding: 60px;
+    margin: auto;
+}
+
+.products {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+}
+
+.price {
+    border: 1px solid red;
+}

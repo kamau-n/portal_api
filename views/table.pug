@@ -1,0 +1,45 @@
+html 
+ head 
+ title  table data 
+ link(rel="stylesheet", href="index.css", type="text/css")
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ body
+  h3.head1 Available Activities 
+  form(action="/book",method="post")
+   table 
+    tr
+     th Unit
+     th Selection
+    tr 
+     td laundry
+     td select
+      input(type="radio",name="service",value="laundry") 
+    tr 
+     td parking
+     td select
+      input(type="radio",name="service",value="parking")
+    tr 
+     td massage
+     td select
+      input(type="radio",name="unit",value="massage")
+    
+    tr 
+     td wifi
+     td select
+      input(type="radio",name="service",value="wifi")
+    tr 
+     td Nature walk
+     td select
+      input(type="radio",name="service",value="nature walk")
+    tr 
+     td cleaning
+     td select
+      input(type="radio",name="service",value="cleaning")    
+    tr 
+     td massage
+     td select
+      input(type="radio",name="service",value="massage") 
+      br
+      input(type="submit", value="submit")
