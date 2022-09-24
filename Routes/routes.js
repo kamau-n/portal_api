@@ -1,8 +1,13 @@
 const express = require("express")
-const login = express.Router()
+const router = express.Router()
     //const conn = require('../Config/database')
 
+const db = require("../Config/db.config")
+
+const cookieParser = require("cookie-parser");
+const bodyParser = require('body-parser')
 const Student = require("../Models/portal.model")
+const bcrypt = require("bcrypt")
 
 
 
@@ -31,6 +36,7 @@ router.get("/login", (req, res) => {
 })
 
 router.post('/login', async(req, res) => {
+    console.log(req.body)
     const student = await Student.findOne({ where: { email: req.body.email } })
     if (student) {
 
@@ -41,7 +47,7 @@ router.post('/login', async(req, res) => {
 
             req.session.user = student;
             res.send(req.session)
-            z
+
         } else {
             res.json({ message: " the password is incorrect" })
         }
@@ -58,6 +64,60 @@ router.post('/login', async(req, res) => {
 
 
 })
+
+
+// This is a delete request
+
+router.delete("/student", (req, res) => {
+    Student.destroy({ where: { id: req.body.id } })
+        .then((success) => {
+            console.log("Sucessfully deleted")
+            res.json({ message: "The student data has been successfully deleted" })
+        })
+        .catch((err) => res.json({ message: "There was an error in the deletion of the data" }))
+
+
+})
+
+// this is an update the student password
+
+
+router.post('/reset', (req, res) => {
+    Student.findOne({ where: { email: req.body.email } })
+        .then((student) => {
+            if (student != null) {
+                console.log(student.email)
+                bcrypt.hash(req.body.password, 10, (err, hash) => {
+                    console.log(hash)
+                    Student.update({ pass: hash }, { where: { email: req.body.email } })
+                        .then((response) => {
+                            console.log(hash)
+                            res.json({ message: "The Students Password has been updated sucessfullly" })
+                            console.log("student data updated suceessfully")
+
+
+                        })
+                        .catch((err) => {
+                            console.log("there was an error" + err.message)
+
+                        })
+
+                })
+            } else {
+                res.json({ message: "The student does not exist" })
+                console.log("The student does not exist")
+
+            }
+
+        })
+
+
+})
+
+
+
+
+
 
 
 

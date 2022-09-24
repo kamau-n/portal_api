@@ -6,6 +6,7 @@ const mysql = require("mysql")
 const bcrypt = require("bcrypt");
 const login = require('../Routes/login')
 const register = require('../Routes/register')
+const router = require("../Routes/routes")
 const db = require('../Config/db.config')
 
 
@@ -52,9 +53,8 @@ app.use(session({
 
 
 
-app.use('/login', login)
+app.use('/', router)
 
-app.use('/register', register)
 
 
 
