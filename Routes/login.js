@@ -2,35 +2,23 @@ const express = require("express")
 const login = express.Router()
     //const conn = require('../Config/database')
 
+const db = require("../Config/db.config")
+
+const cookieParser = require("cookie-parser");
+const bodyParser = require('body-parser')
 const Student = require("../Models/portal.model")
+const bcrypt = require("bcrypt")
 
 
 
 
-router.get("/all", (req, res) => {
-    Student.findAll()
-        .then((students) => {
-            console.log(students)
-            res.send(students)
-        })
-        .catch((err) => {
-            console.log("there is an error" + err.message)
-            res.sendStatus(404)
-        })
-
-})
-
-
-
-
-
-router.get("/login", (req, res) => {
+login.get("/login", (req, res) => {
     res.render("login")
 
 
 })
 
-router.post('/login', async(req, res) => {
+login.post('/login', async(req, res) => {
     const student = await Student.findOne({ where: { email: req.body.email } })
     if (student) {
 
@@ -59,6 +47,4 @@ router.post('/login', async(req, res) => {
 
 })
 
-
-
-module.exports = router;
+module.exports = login;

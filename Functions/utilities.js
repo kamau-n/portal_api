@@ -11,10 +11,20 @@ const hashes = (raw) => {
 
 const register = (a, b, c, d, e) => {
 
-    conn.query(`Insert into Users (Name,email,county,gender,pass) values(?,?,?,?,?)`, a, b, c, d, hashes(e), (err, result) => {
-        console.log(result)
+    conn.query(`insert into Users (Name,email,county,gender,pass Values('${a}',${b}',${c}',${d}',${e}'))`, (err, results) => {
+        if (err) {
+            return (" there was an error")
+            console.log(err.message)
+        } else {
+            return ("Data successfully inserted into the table")
+            console.log("we have successfully inserted data into the table")
+        }
     })
+
+
 
 }
 
-module.exports = { register }
+
+exports.register = register;
+exports.hash = hashes;

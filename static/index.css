@@ -8,12 +8,12 @@ td {
 }
 
 .forms {
-    border: 1px solid;
     margin: auto;
     width: 60%;
     text-align: center;
-    background-color: aquamarine;
-    opacity: 0.6;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .button {
@@ -23,7 +23,6 @@ td {
     color: black;
     height: 20px;
     border-style: groove;
-    background-color: rgb(151, 151, 163);
 }
 
 .contents {

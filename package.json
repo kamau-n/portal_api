@@ -7,5 +7,8 @@
         "start": "nodemon src/app.js"
     },
     "author": "",
-    "license": "ISC"
+    "license": "ISC",
+    "dependencies": {
+        "sequelize": "^6.23.0"
+    }
 }
