@@ -12,39 +12,5 @@ const bcrypt = require("bcrypt")
 
 
 
-login.get("/login", (req, res) => {
-    res.render("login")
-
-
-})
-
-login.post('/login', async(req, res) => {
-    const student = await Student.findOne({ where: { email: req.body.email } })
-    if (student) {
-
-
-        const verified = await bcrypt.compare(req.body.password, student.pass)
-        if (verified) {
-
-
-            req.session.user = student;
-            res.send(req.session)
-            z
-        } else {
-            res.json({ message: " the password is incorrect" })
-        }
-
-
-    } else {
-        res.json({ message: "The use provided does no exist" })
-
-    }
-
-
-
-
-
-
-})
 
 module.exports = login;

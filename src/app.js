@@ -8,6 +8,7 @@ const login = require('../Routes/login')
 const register = require('../Routes/register')
 const router = require("../Routes/routes")
 const db = require('../Config/db.config')
+const cors = require('cors')
 
 
 const app = express();
@@ -39,7 +40,7 @@ app.use(session({
     resave: false,
     cookie: {
         secure: true,
-        maxAge: 1000 * 60 * 5,
+        maxAge: 1000 * 60 * 50,
         sameSite: true,
 
 
@@ -50,6 +51,8 @@ app.use(session({
 
 
 }));
+
+app.use(cors())
 
 
 

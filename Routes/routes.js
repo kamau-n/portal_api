@@ -12,6 +12,10 @@ const bcrypt = require("bcrypt")
 
 
 
+
+
+
+
 router.get("/all", (req, res) => {
     Student.findAll()
         .then((students) => {
@@ -47,6 +51,7 @@ router.post('/login', async(req, res) => {
 
             req.session.user = student;
             res.send(req.session)
+            console.log("the student has been verified sucessfullly")
 
         } else {
             res.json({ message: " the password is incorrect" })
@@ -79,7 +84,7 @@ router.delete("/student", (req, res) => {
 
 })
 
-// this is an update the student password
+// this is an update the student passwordw
 
 
 router.post('/reset', (req, res) => {
