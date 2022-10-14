@@ -8,12 +8,9 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require('body-parser')
 const Student = require("../Models/portal.model")
 const bcrypt = require("bcrypt")
+const Unit = require("../Models/units.model")
 
-
-
-
-
-
+const Enrolled = require("../Models/enrolled.model")
 
 
 router.get("/all", (req, res) => {
@@ -47,8 +44,6 @@ router.post('/login', async(req, res) => {
 
         const verified = await bcrypt.compare(req.body.password, student.pass)
         if (verified) {
-
-
             req.session.user = student;
             res.send(req.session)
             console.log("the student has been verified sucessfullly")
@@ -123,6 +118,32 @@ router.post('/reset', (req, res) => {
 
 
 
+
+router.get("/units", (req, res) => {
+    Unit.findAll()
+        .then((units) => {
+            res.send(units)
+
+        })
+        .catch((err) => {
+            res.send({ message: "Unable to get Unit" + err.message })
+
+        })
+})
+
+
+router.post('/book', (req, res) => {
+    Enrolled.create({
+            Student_id: req.body.s_id,
+            Unit_id: req.body.u_id
+        })
+        .then(() => {
+            res.send({ message: "Unit has been registered Successfully" })
+        })
+        .catch((err) => { res.send({ message: "The Unit has not been Registered Successfully" + err.message }) })
+
+
+})
 
 
 

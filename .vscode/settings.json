@@ -1,3 +1,20 @@
 {
-    "vscode-corda.isCordaProject": false
+    "vscode-corda.isCordaProject": false,
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "localhost",
+            "group": "none",
+            "database": "kamau",
+            "username": "root",
+            "password": ""
+        }
+    ],
+    "netbeans.javaSupport.enabled": true
 }
